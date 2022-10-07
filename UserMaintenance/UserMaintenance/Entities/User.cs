@@ -9,16 +9,6 @@ namespace UserMaintenance.Entities
     public class User
     {
         public Guid ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string FullName { get
-            {
-                return string.Format(
-                "{0} {1}",
-                LastName,
-                FirstName); //ezzel a megoldással az itt felsorolt változók azonosítókkal behívhatók ({0}, {1})
-            }               //      -> átláthatóbb lesz a formázás
-        }
-
+        public string FullName { get; set; }
     }
 }
