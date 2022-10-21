@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
 using WebService.Entities;
 using WebService.MnbServiceReference;
@@ -24,6 +25,7 @@ namespace WebService
             dataGridView1.DataSource = Rates;
 
             CallWebservice();
+            CreateChart();
         }
 
         private void CallWebservice()
@@ -59,6 +61,24 @@ namespace WebService
                     rd.Value = value/unit;
                 }
             }
+        }
+
+        private void CreateChart()
+        {
+            chart1.DataSource = Rates;
+            var series = chart1.Series[0];
+            series.ChartType = SeriesChartType.Line;
+            series.XValueMember = "Date";
+            series.YValueMembers = "Value";
+            series.BorderWidth = 2;
+
+            var area = chart1.ChartAreas[0];
+            area.AxisX.MajorGrid.Enabled = false;
+            area.AxisY.MajorGrid.Enabled = false;
+            area.AxisY.IsStartedFromZero = false;
+
+            var legend = chart1.Legends[0];
+            legend.Enabled = false;
         }
     }
 }
