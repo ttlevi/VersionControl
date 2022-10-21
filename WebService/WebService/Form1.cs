@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using WebService.Entities;
 using WebService.MnbServiceReference;
 
@@ -37,6 +38,27 @@ namespace WebService
 
             var response = mnbService.GetExchangeRates(request);
             var result = response.GetExchangeRatesResult;
+
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rd = new RateData();
+                Rates.Add(rd);
+
+                rd.Date = DateTime.Parse(element.GetAttribute("date"));
+                
+                var firstChild = (XmlElement)element.ChildNodes[0];
+                rd.Currency = firstChild.GetAttribute("curr");
+
+                var unit = decimal.Parse(firstChild.GetAttribute("unit"));
+                var value = decimal.Parse(firstChild.InnerText);
+                if (unit != 0)
+                {
+                    rd.Value = value/unit;
+                }
+            }
         }
     }
 }
