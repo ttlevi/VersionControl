@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevelopmentPatterns.Abstractions
 {
-    public interface IToyInterface
+    public interface IToyFactory
     {
         Toy CreateNew();
     }
