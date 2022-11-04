@@ -39,9 +39,9 @@
             this.mainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainPanel.Location = new System.Drawing.Point(13, 12);
+            this.mainPanel.Location = new System.Drawing.Point(13, 169);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(775, 426);
+            this.mainPanel.Size = new System.Drawing.Size(775, 269);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
