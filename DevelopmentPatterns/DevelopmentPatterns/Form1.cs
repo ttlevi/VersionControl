@@ -13,7 +13,7 @@ namespace DevelopmentPatterns
 {
     public partial class Form1 : Form
     {
-        private List<Ball> _balls = new List<Ball>();
+        private List<Toy> _toys = new List<Toy>();
 
         private BallFactory _factory;
         public BallFactory Factory
@@ -30,27 +30,27 @@ namespace DevelopmentPatterns
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            Ball b = Factory.CreateNew();
-            _balls.Add(b);
-            mainPanel.Controls.Add(b);
-            b.Left = -b.Width;
+            Toy t = Factory.CreateNew();
+            _toys.Add(t);
+            mainPanel.Controls.Add(t);
+            t.Left = -t.Width;
         }
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
 
-            foreach (var b in _balls)
+            foreach (var t in _toys)
             {
-                b.MoveBall();
+                t.MoveToy();
 
-                if (b.Left > maxPosition) { maxPosition = b.Left; }
+                if (t.Left > maxPosition) { maxPosition = t.Left; }
             }
 
             if (maxPosition > 1000)
             {
-                var oldestBall = _balls[0];
-                _balls.Remove(oldestBall);
+                var oldestBall = _toys[0];
+                _toys.Remove(oldestBall);
                 mainPanel.Controls.Remove(oldestBall);
             }
         }
