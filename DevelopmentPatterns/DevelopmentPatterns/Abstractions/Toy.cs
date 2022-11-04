@@ -15,10 +15,10 @@ namespace DevelopmentPatterns.Abstractions
             AutoSize = false;
             Height = 50;
             Width = 50;
-            Paint += Ball_Paint;
+            Paint += Toy_Paint;
         }
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        private void Toy_Paint(object sender, PaintEventArgs e)
         {
             DrawImage(e.Graphics);
         }
