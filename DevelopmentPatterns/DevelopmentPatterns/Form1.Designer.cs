@@ -35,7 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCar = new System.Windows.Forms.Button();
             this.btnBall = new System.Windows.Forms.Button();
-            this.btnColor = new System.Windows.Forms.Button();
+            this.btnBallColor = new System.Windows.Forms.Button();
+            this.btnPresent = new System.Windows.Forms.Button();
+            this.btnBoxColor = new System.Windows.Forms.Button();
+            this.btnRibColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -73,7 +76,7 @@
             // 
             this.btnCar.Location = new System.Drawing.Point(13, 12);
             this.btnCar.Name = "btnCar";
-            this.btnCar.Size = new System.Drawing.Size(75, 23);
+            this.btnCar.Size = new System.Drawing.Size(93, 23);
             this.btnCar.TabIndex = 2;
             this.btnCar.Text = "CAR";
             this.btnCar.UseVisualStyleBackColor = true;
@@ -81,30 +84,63 @@
             // 
             // btnBall
             // 
-            this.btnBall.Location = new System.Drawing.Point(95, 12);
+            this.btnBall.Location = new System.Drawing.Point(112, 12);
             this.btnBall.Name = "btnBall";
-            this.btnBall.Size = new System.Drawing.Size(75, 23);
+            this.btnBall.Size = new System.Drawing.Size(93, 23);
             this.btnBall.TabIndex = 3;
             this.btnBall.Text = "BALL";
             this.btnBall.UseVisualStyleBackColor = true;
             this.btnBall.Click += new System.EventHandler(this.btnBall_Click);
             // 
-            // btnColor
+            // btnBallColor
             // 
-            this.btnColor.BackColor = System.Drawing.Color.Lime;
-            this.btnColor.Location = new System.Drawing.Point(95, 42);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(75, 23);
-            this.btnColor.TabIndex = 4;
-            this.btnColor.UseVisualStyleBackColor = false;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            this.btnBallColor.BackColor = System.Drawing.Color.Blue;
+            this.btnBallColor.Location = new System.Drawing.Point(112, 41);
+            this.btnBallColor.Name = "btnBallColor";
+            this.btnBallColor.Size = new System.Drawing.Size(93, 23);
+            this.btnBallColor.TabIndex = 4;
+            this.btnBallColor.UseVisualStyleBackColor = false;
+            this.btnBallColor.Click += new System.EventHandler(this.btnBallColor_Click);
+            // 
+            // btnPresent
+            // 
+            this.btnPresent.Location = new System.Drawing.Point(211, 13);
+            this.btnPresent.Name = "btnPresent";
+            this.btnPresent.Size = new System.Drawing.Size(93, 23);
+            this.btnPresent.TabIndex = 5;
+            this.btnPresent.Text = "PRESENT";
+            this.btnPresent.UseVisualStyleBackColor = true;
+            this.btnPresent.Click += new System.EventHandler(this.btnPresent_Click);
+            // 
+            // btnBoxColor
+            // 
+            this.btnBoxColor.BackColor = System.Drawing.Color.Red;
+            this.btnBoxColor.Location = new System.Drawing.Point(211, 41);
+            this.btnBoxColor.Name = "btnBoxColor";
+            this.btnBoxColor.Size = new System.Drawing.Size(93, 23);
+            this.btnBoxColor.TabIndex = 6;
+            this.btnBoxColor.UseVisualStyleBackColor = false;
+            this.btnBoxColor.Click += new System.EventHandler(this.btnBallColor_Click);
+            // 
+            // btnRibColor
+            // 
+            this.btnRibColor.BackColor = System.Drawing.Color.Yellow;
+            this.btnRibColor.Location = new System.Drawing.Point(211, 70);
+            this.btnRibColor.Name = "btnRibColor";
+            this.btnRibColor.Size = new System.Drawing.Size(93, 23);
+            this.btnRibColor.TabIndex = 7;
+            this.btnRibColor.UseVisualStyleBackColor = false;
+            this.btnRibColor.Click += new System.EventHandler(this.btnBallColor_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnColor);
+            this.Controls.Add(this.btnRibColor);
+            this.Controls.Add(this.btnBoxColor);
+            this.Controls.Add(this.btnPresent);
+            this.Controls.Add(this.btnBallColor);
             this.Controls.Add(this.btnBall);
             this.Controls.Add(this.btnCar);
             this.Controls.Add(this.label1);
@@ -124,7 +160,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCar;
         private System.Windows.Forms.Button btnBall;
-        private System.Windows.Forms.Button btnColor;
+        private System.Windows.Forms.Button btnBallColor;
+        private System.Windows.Forms.Button btnPresent;
+        private System.Windows.Forms.Button btnBoxColor;
+        private System.Windows.Forms.Button btnRibColor;
     }
 }
 

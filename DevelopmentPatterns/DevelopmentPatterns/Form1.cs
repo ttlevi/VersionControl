@@ -69,7 +69,15 @@ namespace DevelopmentPatterns
         {
             Factory = new BallFactory()
             {
-                BallColor = btnColor.BackColor
+                BallColor = btnBallColor.BackColor
+            };
+        }
+        private void btnPresent_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory()
+            {
+                BoxColor = btnBoxColor.BackColor,
+                RibbonColor = btnRibColor.BackColor
             };
         }
 
@@ -78,11 +86,11 @@ namespace DevelopmentPatterns
             if (_nextToy != null) { Controls.Remove(_nextToy); };
             _nextToy = Factory.CreateNew();
             _nextToy.Top = label1.Top + 20;
-            _nextToy.Left = label1.Left;
+            _nextToy.Left = label1.Left+20;
             Controls.Add(_nextToy);
         }
 
-        private void btnColor_Click(object sender, EventArgs e)
+        private void btnBallColor_Click(object sender, EventArgs e)
         {
             var button = (Button)sender;
             var colorPicker = new ColorDialog();
