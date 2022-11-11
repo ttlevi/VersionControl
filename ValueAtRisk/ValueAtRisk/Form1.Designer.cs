@@ -30,6 +30,7 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -54,11 +55,22 @@
             this.dataGridView2.Size = new System.Drawing.Size(575, 425);
             this.dataGridView2.TabIndex = 1;
             // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(13, 445);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(320, 40);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "EXPORT";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 450);
+            this.ClientSize = new System.Drawing.Size(1202, 505);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
@@ -73,6 +85,7 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
