@@ -27,7 +27,7 @@ namespace WebService
 
             dataGridView1.DataSource = Rates;
             comboBox1.DataSource = Currencies;
-            comboBox1.SelectedItem = "EUR";
+
             string res = LoadCurrencies();
             DigCurrenciesXML(res);
 
