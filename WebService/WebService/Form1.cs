@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
+using System.Xml.Linq;
 using WebService.Entities;
 using WebService.MnbServiceReference;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace WebService
 {
@@ -25,8 +27,9 @@ namespace WebService
 
             dataGridView1.DataSource = Rates;
             comboBox1.DataSource = Currencies;
-
-
+            comboBox1.SelectedItem = "EUR";
+            string res = LoadCurrencies();
+            DigCurrenciesXML(res);
 
             RefreshData();
         }
@@ -35,23 +38,34 @@ namespace WebService
         {
             Rates.Clear();
 
-            CallWebservice();
+            var res = LoadExchangeRates();
+            DigExchangeRatesXML(res);
             CreateChart();
+
         }
 
-        private void CallWebservice()
+        private void DigCurrenciesXML(string result)
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(result);
+
+            foreach (XmlElement element in xml.DocumentElement.ChildNodes[0])
+            {
+                Currencies.Add(element.InnerText);
+            }
+        }
+
+        private string LoadCurrencies()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
-            var request = new GetExchangeRatesRequestBody()
-            {
-                currencyNames = comboBox1.SelectedItem.ToString(),
-                startDate = dateTimePicker1.Value.ToString(),
-                endDate = dateTimePicker2.Value.ToString()
-            };
+            var request = new GetCurrenciesRequestBody();
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+            return result;
+        }
 
-            var response = mnbService.GetExchangeRates(request);
-            var result = response.GetExchangeRatesResult;
-
+        private void DigExchangeRatesXML(string result)
+        {
             var xml = new XmlDocument();
             xml.LoadXml(result);
 
@@ -61,17 +75,38 @@ namespace WebService
                 Rates.Add(rd);
 
                 rd.Date = DateTime.Parse(element.GetAttribute("date"));
-                
+
                 var firstChild = (XmlElement)element.ChildNodes[0];
+                if (firstChild == null)
+                    continue;
+
                 rd.Currency = firstChild.GetAttribute("curr");
 
                 var unit = decimal.Parse(firstChild.GetAttribute("unit"));
                 var value = decimal.Parse(firstChild.InnerText);
                 if (unit != 0)
                 {
-                    rd.Value = value/unit;
+                    rd.Value = value / unit;
                 }
             }
+        }
+
+        private string LoadExchangeRates()
+        {
+            var mnbService = new MNBArfolyamServiceSoapClient(); 
+
+            var request = new GetExchangeRatesRequestBody()
+            {
+                currencyNames = comboBox1.Text,
+                startDate = dateTimePicker1.Value.ToString(),
+                endDate = dateTimePicker2.Value.ToString()
+            };
+
+            var response = mnbService.GetExchangeRates(request);
+            var result = response.GetExchangeRatesResult;
+
+            return result;
+            
         }
 
         private void CreateChart()
